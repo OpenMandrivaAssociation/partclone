@@ -1,4 +1,4 @@
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:         partclone
 Version:      0.0.6	 
