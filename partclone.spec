@@ -1,14 +1,21 @@
-%define release %mkrel 2
+%define release %mkrel 1
 
 Name:         partclone
-Version:      0.0.6	 
+Version:      0.1.9
 Release:      %{release}
 Group:        System/Configuration/Other
 URL:          http://partclone.sf.net
-License:      GPL
+License:      GPL2
 Summary:      File System Clone Utilities
 Source0:      %{name}_%{version}-3.tar.gz
-BuildRequires: e2fsprogs-devel, reiser4progs, xfsprogs-devel 
+Patch0:		  configure.patch
+Patch1:		  libxfs.patch
+BuildRequires: e2fsprogs-devel
+BuildRequires: reiser4progs
+BuildRequires: xfsprogs-devel
+BuildRequires: libntfs-devel
+BuildRequires: xfs-devel
+#BuildRequires: reiser4progs-devel
 BuildRoot:    %{_tmppath}/%{name}-build
 
 %description
@@ -23,20 +30,18 @@ Authors:
     http://partclone.nchc.org.tw
 
 %prep
-%setup -q -n %{name}
+%setup -q 
+%patch0
+%patch1
 
 %build
-%configure
+autoconf
+%configure --enable-ntfs --enable-extfs --enable-hfsp --enable-fat
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-
-%post
-
-%postun
-ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -46,5 +51,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog NEWS README TODO
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
-/usr/share/locale/*
-
+%lang(zh) /usr/share/locale/zh_TW/LC_MESSAGES/partclone.mo
