@@ -31,7 +31,6 @@ Authors:
 #patch1 -p1
 
 %build
-autoconf
 %configure \
 	--enable-extfs \
 	--enable-hfsp \
