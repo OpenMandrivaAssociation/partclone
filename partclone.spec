@@ -1,26 +1,23 @@
 %define release %mkrel 1
 
-Name:         partclone
-Version:      0.1.9
-Release:      %{release}
-Group:        System/Configuration/Other
-URL:          http://partclone.sf.net
-License:      GPL2
-Summary:      File System Clone Utilities
-Source0:      %{name}_%{version}-3.tar.gz
-Patch0:		  configure.patch
-Patch1:		  libxfs.patch
-BuildRequires: e2fsprogs-devel
-BuildRequires: reiser4progs
-BuildRequires: xfsprogs-devel
-BuildRequires: libntfs-devel
-BuildRequires: xfs-devel
-#BuildRequires: reiser4progs-devel
+Name:		partclone
+Version:	0.2.38
+Release:	%{release}
+Group:		System/Configuration/Other
+URL:		http://partclone.sf.net
+License:	GPLv2
+Summary:	File System Clone Utilities
+Source0:	%{name}_%{version}.tar.gz
+Patch1:		partclone-0.2.38-mdv-libxfs.patch
+BuildRequires:	e2fsprogs-devel
+BuildRequires:	libntfs-devel
+BuildRequires:	ncursesw-devel
 BuildRoot:    %{_tmppath}/%{name}-build
 
 %description
-A set of file system clone utilities, including
-ext2/3, reiserfs, reiser4, xfs, hfs+ file system.
+Partclone provides utilities to back up and restore used-blocks of a partition
+and it is designed for higher compatibility of the file system by using
+existing library, e.g. e2fslibs is used to read and write the ext2 partition.
 
 Authors:
 --------
@@ -31,24 +28,29 @@ Authors:
 
 %prep
 %setup -q 
-%patch0
-%patch1
+#patch1 -p1
 
 %build
 autoconf
-%configure --enable-ntfs --enable-extfs --enable-hfsp --enable-fat
+%configure \
+	--enable-extfs \
+	--enable-hfsp \
+	--enable-fat \
+	--enable-ntfs \
+	--enable-btrfs \
+	--enable-ncursesw
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
+%find_lang %name
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog README TODO
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
-%lang(zh) /usr/share/locale/zh_TW/LC_MESSAGES/partclone.mo
