@@ -38,7 +38,7 @@ Authors:
 	--enable-ntfs \
 	--enable-btrfs \
 	--enable-ncursesw
-%make
+make
 
 %install
 rm -rf %{buildroot}
