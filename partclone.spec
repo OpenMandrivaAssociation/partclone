@@ -12,6 +12,7 @@ Patch1:		partclone-0.2.38-mdv-libxfs.patch
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	libntfs-devel
 BuildRequires:	ncursesw-devel
+BuildRequires:	libuuid-devel
 BuildRoot:    %{_tmppath}/%{name}-build
 
 %description
@@ -38,7 +39,7 @@ Authors:
 	--enable-ntfs \
 	--enable-btrfs \
 	--enable-ncursesw
-make
+%make
 
 %install
 rm -rf %{buildroot}
