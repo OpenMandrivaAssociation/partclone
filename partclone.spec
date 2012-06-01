@@ -1,20 +1,17 @@
-%define release %mkrel 1
-
 Name:		partclone
-Version:	0.2.38
-Release:	%{release}
+Version:	0.2.48
+Release:	%mkrel 1
 Group:		System/Configuration/Other
 URL:		http://partclone.sf.net
 License:	GPLv2
 Summary:	File System Clone Utilities
-Source0:	%{name}_%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/project/partclone/stable/%{version}/%{name}-%{version}.tar.gz
 Patch1:		partclone-0.2.38-mdv-libxfs.patch
-BuildRequires:	e2fsprogs-devel
+BuildRequires:	ext2fs-devel
 BuildRequires:	libntfs-devel
 BuildRequires:	ncursesw-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	libuuid-devel
-BuildRoot:    %{_tmppath}/%{name}-build
 
 %description
 Partclone provides utilities to back up and restore used-blocks of a partition
@@ -43,15 +40,10 @@ Authors:
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 %find_lang %name
 
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README TODO
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
