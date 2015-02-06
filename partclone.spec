@@ -1,6 +1,6 @@
 Name:		partclone
 Version:	0.2.48
-Release:	2
+Release:	3
 Group:		System/Configuration/Other
 URL:		http://partclone.sf.net
 License:	GPLv2
