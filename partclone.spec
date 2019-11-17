@@ -1,11 +1,11 @@
 Name:		partclone
-Version:	0.2.48
-Release:	3
+Version:	0.3.13
+Release:	1
 Group:		System/Configuration/Other
 URL:		http://partclone.sf.net
 License:	GPLv2
 Summary:	File System Clone Utilities
-Source0:	http://downloads.sourceforge.net/project/partclone/stable/%{version}/%{name}-%{version}.tar.gz
+Source0:	https://sourceforge.net/projects/partclone/files/source/%{name}-%{version}.tar.gz
 Patch1:		partclone-0.2.38-mdv-libxfs.patch
 BuildRequires:	ext2fs-devel
 BuildRequires:	pkgconfig(libntfs-3g)
