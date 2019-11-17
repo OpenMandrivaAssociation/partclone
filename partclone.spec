@@ -12,6 +12,7 @@ BuildRequires:	pkgconfig(libntfs-3g)
 BuildRequires:	ncursesw-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	libuuid-devel
+BuildRequires:	pkgconfig(blkid)
 
 %description
 Partclone provides utilities to back up and restore used-blocks of a partition
