@@ -6,7 +6,6 @@ URL:		http://partclone.sf.net
 License:	GPLv2
 Summary:	File System Clone Utilities
 Source0:	https://sourceforge.net/projects/partclone/files/source/%{name}-%{version}.tar.gz
-Patch1:		partclone-0.2.38-mdv-libxfs.patch
 BuildRequires:	ext2fs-devel
 BuildRequires:	pkgconfig(libntfs-3g)
 BuildRequires:	ncursesw-devel
@@ -14,6 +13,14 @@ BuildRequires:	ncurses-devel
 BuildRequires:	libuuid-devel
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libbsd)
+BuildRequires:  pkgconfig(uuid)
+BuildRequires:  btrfs-devel
+BuildRequires:	nilfs-utils-devel
+BuildRequires:	gettext-devel
+BuildRequires:  pkgconfig(fuse)
+
+
 
 %description
 Partclone provides utilities to back up and restore used-blocks of a partition
@@ -29,7 +36,6 @@ Authors:
 
 %prep
 %setup -q 
-#patch1 -p1
 
 %build
 %configure \
@@ -38,15 +44,21 @@ Authors:
 	--enable-fat \
 	--enable-ntfs \
 	--enable-btrfs \
-	--enable-ncursesw
-%make
+	--enable-ncursesw \
+	--enable-fs-test \
+	--enable-xfs \
+	--enable-exfat \
+	--enable-f2fs \
+	--enable-nilfs2 \
+	--enable-minix
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 %find_lang %name
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS ChangeLog README.md TODO
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
 
