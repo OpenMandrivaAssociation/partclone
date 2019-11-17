@@ -61,6 +61,7 @@ Authors:
 %doc AUTHORS ChangeLog README.md TODO
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
+%{_datadir}/partclone/fail-mbr.bin
 
 
 %changelog
