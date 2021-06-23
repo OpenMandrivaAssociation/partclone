@@ -6,6 +6,7 @@ URL:		http://partclone.sf.net
 License:	GPLv2
 Summary:	File System Clone Utilities
 Source0:	https://sourceforge.net/projects/partclone/files/source/%{name}-%{version}.tar.gz
+Patch0:		https://src.fedoraproject.org/rpms/partclone/raw/rawhide/f/partclone-0.3.17-c99-for-loop.patch
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	pkgconfig(libntfs-3g)
 BuildRequires:	ncursesw-devel
@@ -53,11 +54,19 @@ Authors:
 
 %install
 %make_install
+# Building fail-mbr.bin requires a compiler that can build x86 binaries
+%ifnarch %{ix86} %{x86_64}
+rm -rf %{buildroot}%{_datadir}/%{name}
+%endif
+
 %find_lang %{name}
 
 %files -f %{name}.lang
 %doc AUTHORS ChangeLog README.md TODO
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
-%{_datadir}/partclone/fail-mbr.bin
+%ifarch %{ix86} %{x86_64}
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/fail-mbr.bin
+%endif
 

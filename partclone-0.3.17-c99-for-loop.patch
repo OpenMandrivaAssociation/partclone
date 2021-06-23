@@ -1,0 +1,45 @@
+From 58e56e358b75977c52c340484f0eba403183d3c8 Mon Sep 17 00:00:00 2001
+From: Robert Scheck <robert@fedoraproject.org>
+Date: Wed, 30 Dec 2020 23:02:32 +0100
+Subject: [PATCH] Change C99 for loop init to C89 for compatibility
+
+Upstream: https://github.com/Thomas-Tsai/partclone/pull/152
+---
+ src/torrent_helper.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/torrent_helper.c b/src/torrent_helper.c
+index c7422c68..f7516ea4 100644
+--- a/src/torrent_helper.c
++++ b/src/torrent_helper.c
+@@ -30,6 +30,7 @@ void torrent_update(torrent_generator *torrent, void *buffer, size_t length)
+ 	unsigned long long buffer_offset = 0;
+ 
+ 	int tinfo = torrent->tinfo;
++	int x = 0;
+ 
+ 	while (buffer_remain_length > 0) {
+ 		sha_remain_length = BT_PIECE_SIZE - sha_length;
+@@ -37,7 +38,7 @@ void torrent_update(torrent_generator *torrent, void *buffer, size_t length)
+ 			// finish a piece
+ 			SHA1_Final(torrent->hash, &torrent->ctx);
+ 			dprintf(tinfo, "sha1: ");
+-			for (int x = 0; x < SHA_DIGEST_LENGTH; x++) {
++			for (x = 0; x < SHA_DIGEST_LENGTH; x++) {
+ 				dprintf(tinfo, "%02x", torrent->hash[x]);
+ 			}
+ 			dprintf(tinfo, "\n");
+@@ -67,10 +68,12 @@ void torrent_update(torrent_generator *torrent, void *buffer, size_t length)
+ 
+ void torrent_final(torrent_generator *torrent)
+ {
++	int x = 0;
++
+ 	if (torrent->length) {
+ 		SHA1_Final(torrent->hash, &torrent->ctx);
+ 		dprintf(torrent->tinfo, "sha1: ");
+-		for (int x = 0; x < SHA_DIGEST_LENGTH; x++) {
++		for (x = 0; x < SHA_DIGEST_LENGTH; x++) {
+ 			dprintf(torrent->tinfo, "%02x", torrent->hash[x]);
+ 		}
+ 		dprintf(torrent->tinfo, "\n");
