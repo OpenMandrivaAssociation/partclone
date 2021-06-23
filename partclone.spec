@@ -1,5 +1,5 @@
 Name:		partclone
-Version:	0.3.15
+Version:	0.3.17
 Release:	1
 Group:		System/Configuration/Other
 URL:		http://partclone.sf.net
@@ -10,14 +10,14 @@ BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	pkgconfig(libntfs-3g)
 BuildRequires:	ncursesw-devel
 BuildRequires:	pkgconfig(uuid)
-BuildRequires:  pkgconfig(blkid)
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(libbsd)
-BuildRequires:  pkgconfig(uuid)
-BuildRequires:  btrfs-devel
+BuildRequires:	pkgconfig(blkid)
+BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(libbsd)
+BuildRequires:	pkgconfig(uuid)
+BuildRequires:	btrfs-devel
 BuildRequires:	nilfs-utils-devel
 BuildRequires:	gettext-devel
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:	pkgconfig(fuse)
 
 %description
 Partclone provides utilities to back up and restore used-blocks of a partition
@@ -53,7 +53,7 @@ Authors:
 
 %install
 %make_install
-%find_lang %name
+%find_lang %{name}
 
 %files -f %{name}.lang
 %doc AUTHORS ChangeLog README.md TODO
