@@ -63,7 +63,7 @@ rm -rf %{buildroot}%{_datadir}/%{name}
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog README.md TODO
+%doc AUTHORS ChangeLog README.md
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
 %ifarch %{ix86} %{x86_64}
