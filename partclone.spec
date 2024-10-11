@@ -1,5 +1,5 @@
 Name:		partclone
-Version:	0.3.31
+Version:	0.3.32
 Release:	1
 Group:		System/Configuration/Other
 URL:		https://partclone.sourceforge.net/
