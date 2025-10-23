@@ -67,7 +67,7 @@ rm -rf %{buildroot}%{_datadir}/%{name}
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
 %ifarch %{ix86} %{x86_64}
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/fail-mbr.bin
+#dir %{_datadir}/%{name}
+#{_datadir}/%{name}/fail-mbr.bin
 %endif
 %{_sysconfdir}/bash_completion.d/partclone-prompt
