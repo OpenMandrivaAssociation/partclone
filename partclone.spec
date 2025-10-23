@@ -19,7 +19,7 @@ BuildRequires:	pkgconfig(uuid)
 BuildRequires:	btrfs-devel
 BuildRequires:	nilfs-utils-devel
 BuildRequires:	gettext-devel
-BuildRequires:	ppkgconfig(fuse3)
+BuildRequires:	pkgconfig(fuse3)
 
 %description
 Partclone provides utilities to back up and restore used-blocks of a partition
