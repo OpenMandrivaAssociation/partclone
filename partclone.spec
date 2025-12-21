@@ -8,6 +8,11 @@ Summary:	File System Clone Utilities
 #Source0:	https://sourceforge.net/projects/partclone/files/source/%{name}-%{version}.tar.gz
 Source0:	https://github.com/Thomas-Tsai/partclone/archive//%{version}/%{name}-%{version}.tar.gz
 #Patch0:		https://src.fedoraproject.org/rpms/partclone/raw/rawhide/f/partclone-0.3.17-c99-for-loop.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	pkgconfig(libntfs-3g)
 BuildRequires:	ncursesw-devel
