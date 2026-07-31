@@ -1,6 +1,6 @@
 Name:		partclone
-Version:	0.3.38
-Release:	2
+Version:	0.3.48
+Release:	1
 Group:		System/Configuration/Other
 URL:		https://partclone.sourceforge.net/
 License:	GPLv2
