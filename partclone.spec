@@ -44,11 +44,11 @@ Authors:
 
 %prep
 %autosetup -p1
-gettextize --force --no-changelog
 
 %build
 #aclocal -Im4
 install -m644 /usr/share/gettext/config.rpath .
+install -m644 /usr/share/gettext/po/Makefile.in.in po/
 autoheader
 %configure \
 	--enable-extfs \
