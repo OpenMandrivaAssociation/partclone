@@ -13,8 +13,13 @@ BuildRequires:	automake
 BuildRequires:	libtool-base
 BuildRequires:	slibtool
 BuildRequires:	make
+BuildRequires:	docbook-xsl
+BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	pkgconfig(libntfs-3g)
+BuildRequires:	pkgconfig(libxxhash)
+BuildRequires:	pkgconfig(liburcu)
+BuildRequires:	pkgconfig(libzstd)
 BuildRequires:	ncursesw-devel
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(blkid)
@@ -25,6 +30,7 @@ BuildRequires:	btrfs-devel
 BuildRequires:	nilfs-utils-devel
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(fuse3)
+BuildRequires:	pkgconfig(zlib)
 
 %description
 Partclone provides utilities to back up and restore used-blocks of a partition
@@ -42,6 +48,10 @@ Authors:
 %autosetup -p1
 
 %build
+#aclocal -Im4
+install -m644 /usr/share/gettext/config.rpath .
+install -m644 /usr/share/gettext/po/Makefile.in.in po/
+autoheader
 %configure \
 	--enable-extfs \
 	--enable-hfsp \
@@ -75,4 +85,4 @@ rm -rf %{buildroot}%{_datadir}/%{name}
 #dir %{_datadir}/%{name}
 #{_datadir}/%{name}/fail-mbr.bin
 %endif
-%{_sysconfdir}/bash_completion.d/partclone-prompt
+%{_datadir}/bash-completion/completions/partclone
