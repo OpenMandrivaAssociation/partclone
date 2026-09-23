@@ -44,6 +44,7 @@ Authors:
 
 %prep
 %autosetup -p1
+gettextize --force --no-changelog
 
 %build
 #aclocal -Im4
