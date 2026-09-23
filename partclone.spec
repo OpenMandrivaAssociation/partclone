@@ -42,7 +42,8 @@ Authors:
 %autosetup -p1
 
 %build
-aclocal -Im4
+#aclocal -Im4
+install -m644 /usr/share/gettext/config.rpath .
 autoheader
 %configure \
 	--enable-extfs \
