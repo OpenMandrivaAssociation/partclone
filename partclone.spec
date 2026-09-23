@@ -42,6 +42,8 @@ Authors:
 %autosetup -p1
 
 %build
+aclocal -Im4
+autoheader
 %configure \
 	--enable-extfs \
 	--enable-hfsp \
