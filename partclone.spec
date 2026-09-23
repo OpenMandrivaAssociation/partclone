@@ -29,6 +29,7 @@ BuildRequires:	nilfs-utils-devel
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(fuse3)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	xsltproc
 
 %description
 Partclone provides utilities to back up and restore used-blocks of a partition
