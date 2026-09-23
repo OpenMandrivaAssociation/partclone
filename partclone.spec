@@ -16,6 +16,7 @@ BuildRequires:	make
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	pkgconfig(libntfs-3g)
 BuildRequires:	pkgconfig(libxxhash)
+BuildRequires:	pkgconfig(liburcu)
 BuildRequires:	ncursesw-devel
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(blkid)
