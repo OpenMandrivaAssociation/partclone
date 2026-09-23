@@ -13,6 +13,8 @@ BuildRequires:	automake
 BuildRequires:	libtool-base
 BuildRequires:	slibtool
 BuildRequires:	make
+BuildRequires:	docbook-xsl
+BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	pkgconfig(libntfs-3g)
 BuildRequires:	pkgconfig(libxxhash)
@@ -29,7 +31,6 @@ BuildRequires:	nilfs-utils-devel
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(fuse3)
 BuildRequires:	pkgconfig(zlib)
-BuildRequires:	xsltproc
 
 %description
 Partclone provides utilities to back up and restore used-blocks of a partition
